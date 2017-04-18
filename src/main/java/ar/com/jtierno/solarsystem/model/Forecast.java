@@ -5,6 +5,7 @@ package ar.com.jtierno.solarsystem.model;
  */
 public class Forecast {
 
+    private static Double DELTA = 0.1;
     private ForecastState state;
     public Forecast(Vector p1, Vector p2, Vector p3) {
         final ForecastState forecastState = checkDroughtOrOptimal(p1, p2, p3);
@@ -20,9 +21,12 @@ public class Forecast {
         double slope1 = calculateSlope(p1, p2);
         double slope2 = calculateSlope(p3, p1);
 
-        if(slope1 == slope2){
+        //not perfect collinear check
+        if(slope1 <= slope2 + DELTA && slope1 >= slope2-DELTA){
+            //they are  collinear.
             double slopeOrigin = calculateSlope(p2, new Vector(0.0,0.0));
-            if(slopeOrigin == slope1){
+            if(slope1 <= slopeOrigin + DELTA && slope1 >= slopeOrigin-DELTA){
+                //they are collinear with sun too.
                 return ForecastState.DROUGHT;
             }
             return ForecastState.OPTIMAL;

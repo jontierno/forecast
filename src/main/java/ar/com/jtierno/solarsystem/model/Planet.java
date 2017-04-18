@@ -26,7 +26,7 @@ public class Planet {
         return sunDistance;
     }
 
-    public Vector predictPosition(Integer day){
+    public Vector predictPosition(Long day){
         Double angularPosition = day * angularSpeed;
         Double xPos = Math.cos(angularPosition) * sunDistance;
         Double yPos = Math.sin(angularPosition) * sunDistance;
