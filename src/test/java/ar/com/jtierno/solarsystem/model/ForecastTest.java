@@ -27,6 +27,16 @@ public class ForecastTest {
         Assert.assertEquals(ForecastState.DROUGHT, forecast.getState());
     }
 
+
+    @Test
+    public void droughtGreatDeviation() {
+        Vector p1 = new Vector(10.0, 1.0);
+        Vector p2 = new Vector(20.0, 3.0);
+        Vector p3 = new Vector(30.0, 0.0);
+        final Forecast forecast = new Forecast(p1, p2, p3);
+        Assert.assertNotEquals(ForecastState.DROUGHT, forecast.getState());
+    }
+
     @Test
     public void optimalDayOrigin() {
         Vector p1 = new Vector(10.0, 5.0);
@@ -45,6 +55,14 @@ public class ForecastTest {
         Assert.assertEquals(ForecastState.OPTIMAL, forecast.getState());
     }
 
+    @Test
+    public void optimalDayGreatDeviation() {
+        Vector p1 = new Vector(10.0, 5.0);
+        Vector p2 = new Vector(20.0, 5.0);
+        Vector p3 = new Vector(30.0, 2.0);
+        final Forecast forecast = new Forecast(p1, p2, p3);
+        Assert.assertNotEquals(ForecastState.OPTIMAL, forecast.getState());
+    }
     @Test
     public void rainyForecast() {
         Vector p1 = new Vector(-10.0, -10.0);
