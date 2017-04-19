@@ -17,9 +17,11 @@
 package ar.com.jtierno.solarsystem.api;
 
 import ar.com.jtierno.solarsystem.model.Period;
-import ar.com.jtierno.solarsystem.model.SolarSystem;
 import ar.com.jtierno.solarsystem.service.ForecastService;
-import com.google.api.server.spi.config.*;
+import com.google.api.server.spi.config.Api;
+import com.google.api.server.spi.config.ApiMethod;
+import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.config.Named;
 
 /** The VulcanosAPI API which Endpoints will be exposing. */
 
