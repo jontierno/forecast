@@ -43,7 +43,7 @@ public class VulcanosAPI {
   }
 
   // [END echo_method]
-  @ApiMethod(name = "forecast_create", path = "forecast",httpMethod = "GET")
+  @ApiMethod(name = "forecast_create", path = "forecast",httpMethod = "PUT")
   public void create() {
     new ForecastService().createForecasts();
   }

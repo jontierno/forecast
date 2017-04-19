@@ -19,6 +19,9 @@ public class ForecastService {
     public Period getPeriod (Long day){
         //two inequities unsupported
         final Period now = ofy().load().type(Period.class).filter("from <=", day).order("-from").first().now();
+        if(now == null){
+            return new Period();
+        }
         return now;
     }
 
