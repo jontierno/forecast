@@ -32,8 +32,20 @@
         <servlet-name>EndpointsServlet</servlet-name>
         <url-pattern>/_ah/api/*</url-pattern>
     </servlet-mapping>
-    <!-- [END endpoints-frameworks] -->
-    <!-- End of Endpoints Frameworks v2.0 -->
+
+
+    <filter>
+        <filter-name>ObjectifyFilter</filter-name>
+        <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ObjectifyFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+        <listener-class>ar.com.jtierno.solarsystem.api.OfyHelper</listener-class>
+    </listener>
+
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

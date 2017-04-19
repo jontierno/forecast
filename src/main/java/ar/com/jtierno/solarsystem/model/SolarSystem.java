@@ -34,7 +34,7 @@ public class SolarSystem {
                 peak.nextPositions(positions, actualDay);
             }
         }
-        return new Period(from, actualDay - 1, initialForecast, peak.getMaxDay());
+        return new Period(from, actualDay - 1, initialForecast, initialForecast.equals(ForecastState.RAINY) ? peak.getMaxDay() : null);
     }
 
     private ForecastState calculateForecast(List<Vector> positions) {

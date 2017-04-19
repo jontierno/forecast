@@ -18,6 +18,7 @@ package ar.com.jtierno.solarsystem.api;
 
 import ar.com.jtierno.solarsystem.model.Period;
 import ar.com.jtierno.solarsystem.model.SolarSystem;
+import ar.com.jtierno.solarsystem.service.ForecastService;
 import com.google.api.server.spi.config.*;
 
 /** The VulcanosAPI API which Endpoints will be exposing. */
@@ -37,9 +38,13 @@ public class VulcanosAPI {
   // [END echo_method]
   @ApiMethod(name = "forecast", path = "forecast/{day}",httpMethod = "GET")
   public Period getForeCast(@Named("day") Long day) {
-    final SolarSystem solarSystem = new SolarSystem();
-    return solarSystem.getNextPeriod(day);
+    return new ForecastService().getPeriod(day);
 
   }
 
+  // [END echo_method]
+  @ApiMethod(name = "forecast_create", path = "forecast",httpMethod = "GET")
+  public void create() {
+    new ForecastService().createForecasts();
+  }
 }

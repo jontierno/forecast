@@ -1,20 +1,30 @@
 package ar.com.jtierno.solarsystem.model;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
 /**
  * Created by jonathan on 16/04/17.
  */
+@Entity
 public class Period {
 
-    private final Long peakAt;
-    private Long from;
-    private Long to;
+
+    @Id private Long id;
+    @Index private Long from;
+    @Index private Long to;
     private ForecastState state;
+    @Index private Long peakDay;
+    public Period() {
+    }
 
     public Period(Long from, Long to, ForecastState state, Long peakAt ) {
+        this.id = from+1;
         this.from = from;
         this.to = to;
         this.state = state;
-        this.peakAt = peakAt;
+        this.peakDay = peakAt;
     }
 
     public Long getFrom() {
@@ -29,7 +39,7 @@ public class Period {
         return state;
     }
 
-    public Long getPeakAt() {
-        return peakAt;
+    public Long getPeakDay() {
+        return peakDay;
     }
 }

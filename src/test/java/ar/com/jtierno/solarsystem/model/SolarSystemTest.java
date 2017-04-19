@@ -33,13 +33,13 @@ public class SolarSystemTest {
             counts.put(nextPeriod.getState(),counter);
             i = nextPeriod.getTo() +1;
             if(nextPeriod.getState().equals(ForecastState.RAINY)){
-                rainyPeaks.add(nextPeriod.getPeakAt());
+                rainyPeaks.add(nextPeriod.getPeakDay());
             }
         }
 
         System.out.println("Periods found");
         for (Map.Entry<ForecastState, Long> entry : counts.entrySet()) {
-            System.out.println(entry.toString() + ": " + (entry.getValue() == null ? 0: entry.getValue()) );
+            System.out.println(entry.toString());
         }
 
         System.out.println("Rainy peaks at: ");
